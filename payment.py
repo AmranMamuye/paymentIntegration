@@ -116,6 +116,11 @@ def cancel_payout(payoutid):
 
     return canceled["status"]
 
+def delete_all_customers():
+    for cust in stripe.Customer.list()['data']:
+        stripe.Customer.delete(cust['id'])
+
+delete_all_customers()
 
 
 
